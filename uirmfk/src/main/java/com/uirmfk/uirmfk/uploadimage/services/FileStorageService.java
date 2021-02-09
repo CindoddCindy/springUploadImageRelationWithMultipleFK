@@ -1,11 +1,11 @@
-package com.uirmfk.uirmfk.services;
+package com.uirmfk.uirmfk.uploadimage.services;
 
 
 import java.io.IOException;
 import java.util.stream.Stream;
 
-import com.uirmfk.uirmfk.model.FileDB;
-import com.uirmfk.uirmfk.repository.FileDBRepository;
+import com.uirmfk.uirmfk.uploadimage.model.FileDB;
+import com.uirmfk.uirmfk.uploadimage.repository.FileDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

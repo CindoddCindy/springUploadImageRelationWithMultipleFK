@@ -1,4 +1,4 @@
-package com.uirmfk.uirmfk.model;
+package com.uirmfk.uirmfk.uploadimage.model;
 
 
 import javax.persistence.Entity;

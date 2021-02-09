@@ -1,4 +1,4 @@
-package com.uirmfk.uirmfk.message;
+package com.uirmfk.uirmfk.uploadimage.message;
 
 public class ResponseFile {
 

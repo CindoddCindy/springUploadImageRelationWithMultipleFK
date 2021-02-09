@@ -1,6 +1,6 @@
-package com.uirmfk.uirmfk.exception;
+package com.uirmfk.uirmfk.uploadimage.exception;
 
-import com.uirmfk.uirmfk.message.ResponseMessage;
+import com.uirmfk.uirmfk.uploadimage.message.ResponseMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

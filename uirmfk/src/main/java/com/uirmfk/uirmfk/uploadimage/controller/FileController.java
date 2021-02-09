@@ -1,13 +1,13 @@
-package com.uirmfk.uirmfk.controller;
+package com.uirmfk.uirmfk.uploadimage.controller;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.uirmfk.uirmfk.message.ResponseFile;
-import com.uirmfk.uirmfk.message.ResponseMessage;
-import com.uirmfk.uirmfk.model.FileDB;
-import com.uirmfk.uirmfk.services.FileStorageService;
+import com.uirmfk.uirmfk.uploadimage.message.ResponseFile;
+import com.uirmfk.uirmfk.uploadimage.message.ResponseMessage;
+import com.uirmfk.uirmfk.uploadimage.model.FileDB;
+import com.uirmfk.uirmfk.uploadimage.services.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
