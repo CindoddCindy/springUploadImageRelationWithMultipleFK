@@ -1,48 +1,34 @@
 package com.uirmfk.uirmfk.relation.model;
-import com.uirmfk.uirmfk.uploadimage.model.FileDB;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "item")
-public class Item {
+public class Item extends AuditModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nameItem;
-    private String emailItem;
 
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<User> users;
+    @NotNull
+    @Lob
+    private String text;
 
-    @OneToMany(targetEntity = ImageDescription.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<ImageDescription> imageDescriptions;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "ImageDescription_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
+    private ImageDescription imageDescription;
 
+    public Item(@NotNull String text) {
+        this.text = text;
+    }
 
     public Item() {
-    }
-
-    public Item(String nameItem, String emailItem) {
-        this.nameItem = nameItem;
-        this.emailItem = emailItem;
-    }
-
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public List<ImageDescription> getImageDescriptions() {
-        return imageDescriptions;
-    }
-
-    public void setImageDescriptions(List<ImageDescription> imageDescriptions) {
-        this.imageDescriptions = imageDescriptions;
     }
 
     public Long getId() {
@@ -53,20 +39,19 @@ public class Item {
         this.id = id;
     }
 
-    public String getNameItem() {
-        return nameItem;
+    public String getText() {
+        return text;
     }
 
-    public void setNameItem(String nameItem) {
-        this.nameItem = nameItem;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getEmailItem() {
-        return emailItem;
+    public ImageDescription getImageDescription() {
+        return imageDescription;
     }
 
-    public void setEmailItem(String emailItem) {
-        this.emailItem = emailItem;
+    public void setImageDescription(ImageDescription imageDescription) {
+        this.imageDescription = imageDescription;
     }
-
 }
