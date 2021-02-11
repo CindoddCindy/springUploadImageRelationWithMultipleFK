@@ -128,7 +128,7 @@ public class FileDB extends AuditModel {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(List<Post> post) {
         this.posts = posts;
     }
 

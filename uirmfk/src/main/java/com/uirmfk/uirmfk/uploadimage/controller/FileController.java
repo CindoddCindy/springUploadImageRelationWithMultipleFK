@@ -40,7 +40,7 @@ public class FileController {
     public ResponseEntity<ResponseMessage> uploadFile(
             @RequestParam("file") MultipartFile file,
             @Param("text")String text, @Param("names") String names,
-            @Param("email") String email, @Param("posts") List<Post> posts) {
+            @Param("email") String email, @RequestBody  List<Post> posts) {
         String message = "";
         try {
             storageService.store(file,text,names,email,posts);
