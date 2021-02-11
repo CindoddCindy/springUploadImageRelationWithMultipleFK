@@ -1,8 +1,11 @@
-package com.uirmfk.uirmfk.uploadimage.controller;
 
-import com.uirmfk.uirmfk.uploadimage.exception.ResourceNotFoundException;
-import com.uirmfk.uirmfk.uploadimage.model.FileDB;
-import com.uirmfk.uirmfk.uploadimage.repository.FileDbRepoDua;
+//package com.uirmfk.uirmfk.uploadimage.controller;
+
+//import com.uirmfk.uirmfk.uploadimage.exception.ResourceNotFoundException;
+//import com.uirmfk.uirmfk.uploadimage.model.FileDB;
+//import com.uirmfk.uirmfk.uploadimage.repository.FileDbRepoDua;
+/*
+import com.uirmfk.uirmfk.uploadimage.repository.FileDBRepository;
 import com.uirmfk.uirmfk.uploadimage.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +19,8 @@ import javax.validation.Valid;
 public class FileDbControllerDua {
 
     @Autowired
-    private FileDbRepoDua fileDbRepoDua;
+    //private FileDbRepoDua fileDbRepoDua;
+    private FileDBRepository fileDBRepository;
 
     @Autowired
     private PostRepository postRepository;
@@ -24,7 +28,7 @@ public class FileDbControllerDua {
     @GetMapping("/posts/{postId}/filedb")
     public Page<FileDB> getAllFilesByPostId(@PathVariable (value = "postId") Long postId,
                                                Pageable pageable) {
-        return fileDbRepoDua.findByPostId(postId, pageable);
+        return fileDBRepository.findByPostId(postId, pageable);
     }
 
     @PostMapping("/posts/{postId}/filedb")
@@ -32,7 +36,7 @@ public class FileDbControllerDua {
                                  @Valid @RequestBody FileDB fileDB) {
         return postRepository.findById(postId).map(post -> {
             fileDB.setPost(post);
-            return fileDbRepoDua.save(fileDB);
+            return fileDBRepository.save(fileDB);
         }).orElseThrow(() -> new ResourceNotFoundException("PostId " + postId + " not found"));
     }
 /*
@@ -60,4 +64,5 @@ public class FileDbControllerDua {
     }
 
  */
-}
+
+//}

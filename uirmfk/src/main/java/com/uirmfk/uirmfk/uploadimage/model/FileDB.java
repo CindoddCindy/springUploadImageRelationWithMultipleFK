@@ -26,9 +26,6 @@ public class FileDB extends AuditModel {
     @Lob
     private byte[] data;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idd;
 
     @NotNull
     private String text;
@@ -40,12 +37,14 @@ public class FileDB extends AuditModel {
     private String email;
 
 
-
+/*
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Post post;
+
+ */
 
 
     public FileDB() {
@@ -55,6 +54,15 @@ public class FileDB extends AuditModel {
         this.name = name;
         this.type = type;
         this.data = data;
+    }
+
+    public FileDB(String name, String type, byte[] data, String text, String names, String email) {
+        this.name = name;
+        this.type = type;
+        this.data = data;
+        this.text = text;
+        this.names = names;
+        this.email = email;
     }
 
     public FileDB(String text, String names, String email) {
@@ -93,13 +101,6 @@ public class FileDB extends AuditModel {
         this.data = data;
     }
 
-    public Long getIdd() {
-        return idd;
-    }
-
-    public void setIdd(Long idd) {
-        this.idd = idd;
-    }
 
     public String getText() {
         return text;
@@ -124,7 +125,7 @@ public class FileDB extends AuditModel {
     public void setEmail(String email) {
         this.email = email;
     }
-
+/*
     public Post getPost() {
         return post;
     }
@@ -132,4 +133,6 @@ public class FileDB extends AuditModel {
     public void setPost(Post post) {
         this.post = post;
     }
+
+ */
 }
