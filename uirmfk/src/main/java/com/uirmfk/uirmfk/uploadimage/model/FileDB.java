@@ -7,11 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import com.uirmfk.uirmfk.relation.model.AuditModel;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "files")
-public class FileDB {
+public class FileDB extends AuditModel {
 
     @Id
     @GeneratedValue(generator = "uuid")
