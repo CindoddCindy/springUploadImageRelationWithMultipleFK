@@ -4,6 +4,7 @@ package com.uirmfk.uirmfk.uploadimage.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.uirmfk.uirmfk.uploadimage.exception.ResourceNotFoundException;
 import com.uirmfk.uirmfk.uploadimage.message.ResponseFile;
 import com.uirmfk.uirmfk.uploadimage.message.ResponseMessage;
@@ -36,10 +37,13 @@ public class FileController {
     @Autowired FileDBRepository fileDBRepository;
 
     @PostMapping("/upload")
-    public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file, @Param("text")String text, @Param("names") String names, @Param("email") String email) {
+    public ResponseEntity<ResponseMessage> uploadFile(
+            @RequestParam("file") MultipartFile file,
+            @Param("text")String text, @Param("names") String names,
+            @Param("email") String email, @Param("posts") List<Post> posts) {
         String message = "";
         try {
-            storageService.store(file,text,names,email);
+            storageService.store(file,text,names,email,posts);
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));

@@ -2,9 +2,11 @@ package com.uirmfk.uirmfk.uploadimage.services;
 
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Stream;
 
 import com.uirmfk.uirmfk.uploadimage.model.FileDB;
+import com.uirmfk.uirmfk.uploadimage.model.Post;
 import com.uirmfk.uirmfk.uploadimage.repository.FileDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +21,9 @@ public class FileStorageService {
     @Autowired
     private FileDBRepository fileDBRepository;
 
-    public FileDB store(MultipartFile file, String text, String names, String email) throws IOException {
+    public FileDB store(MultipartFile file, String text, String names, String email, List <Post> posts) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        FileDB FileDB = new FileDB(fileName, file.getContentType(), file.getBytes(), text.toString(),names.toString(),email.toString());
+        FileDB FileDB = new FileDB(fileName, file.getContentType(), file.getBytes(), text.toString(),names.toString(),email.toString(),posts);
         return fileDBRepository.save(FileDB);
     }
 

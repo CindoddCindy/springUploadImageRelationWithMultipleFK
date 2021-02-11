@@ -10,6 +10,9 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "files")
 public class FileDB extends AuditModel {
@@ -56,14 +59,6 @@ public class FileDB extends AuditModel {
         this.data = data;
     }
 
-    public FileDB(String name, String type, byte[] data, String text, String names, String email) {
-        this.name = name;
-        this.type = type;
-        this.data = data;
-        this.text = text;
-        this.names = names;
-        this.email = email;
-    }
 
     public FileDB(String text, String names, String email) {
         this.text = text;
@@ -125,14 +120,26 @@ public class FileDB extends AuditModel {
     public void setEmail(String email) {
         this.email = email;
     }
-/*
-    public Post getPost() {
-        return post;
+
+    @OneToMany(targetEntity = Post.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Post> posts ;
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
-    public void setPost(Post post) {
-        this.post = post;
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
- */
+    public FileDB(String name, String type, byte[] data, String text, String names, String email, List<Post> posts) {
+        this.name = name;
+        this.type = type;
+        this.data = data;
+        this.text = text;
+        this.names = names;
+        this.email = email;
+        this.posts=posts;
+
+    }
 }
