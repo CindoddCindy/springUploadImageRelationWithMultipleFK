@@ -122,7 +122,7 @@ public class FileDB extends AuditModel {
     }
 
     @OneToMany(targetEntity = Post.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Post> posts ;
+    private List<Post> posts;
 
     public List<Post> getPosts() {
         return posts;
