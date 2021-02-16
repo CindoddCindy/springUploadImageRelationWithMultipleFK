@@ -122,7 +122,7 @@ public class FileDB extends AuditModel {
     }
 
     @OneToMany(targetEntity = Post.class, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Post> posts;
+   private List<Post> posts;
 
     public List<Post> getPosts() {
         return posts;
@@ -131,6 +131,8 @@ public class FileDB extends AuditModel {
     public void setPosts(List<Post> post) {
         this.posts = posts;
     }
+
+
 
     public FileDB(String name, String type, byte[] data, String text, String names, String email, List<Post> posts) {
         this.name = name;

@@ -40,10 +40,10 @@ public class FileController {
     public ResponseEntity<ResponseMessage> uploadFile(
             @RequestParam("file") MultipartFile file,
             @Param("text")String text, @Param("names") String names,
-            @Param("email") String email, @RequestParam("post")  List<Post> posts) {
+            @Param("email") String email,@RequestPart(name = "post") @Valid final List<Post> post) {
         String message = "";
         try {
-            storageService.store(file,text,names,email,posts);
+            storageService.store(file,text,names,email,post);
 
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage(message));
